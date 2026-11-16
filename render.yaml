@@ -1,0 +1,16 @@
+# Déploiement Render (https://render.com) : New > Blueprint, puis choisir ce dépôt.
+services:
+  - type: web
+    name: cool-messenger
+    runtime: docker
+    plan: starter          # un disque persistant exige une offre payante
+    healthCheckPath: /health
+    disk:
+      name: cool-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATA_DIR
+        value: /data
