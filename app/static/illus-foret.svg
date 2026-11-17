@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMax slice">
+ <path fill="#1d3b36" opacity=".55" d="M150 120a34 34 0 0 1 64-14 30 30 0 0 1 46 26 22 22 0 0 1-6 42H140a27 27 0 0 1 10-54z"/>
+ <path fill="#2a5a4c" opacity=".7" d="M0 290 150 190l110 70 140-120 150 130 110-70 140 90v110H0z"/>
+ <g stroke="#2bb39a" stroke-width="5" stroke-linecap="round" fill="#2bb39a">
+  <path d="M110 330V210" fill="none"/><ellipse cx="96" cy="235" rx="16" ry="8" transform="rotate(-35 96 235)"/><ellipse cx="124" cy="260" rx="16" ry="8" transform="rotate(35 124 260)"/><ellipse cx="96" cy="285" rx="16" ry="8" transform="rotate(-35 96 285)"/>
+  <path d="M700 330V230" fill="none"/><ellipse cx="714" cy="252" rx="15" ry="7" transform="rotate(35 714 252)"/><ellipse cx="686" cy="276" rx="15" ry="7" transform="rotate(-35 686 276)"/>
+ </g>
+ <g fill="#e2574c"><circle cx="560" cy="200" r="7"/><circle cx="574" cy="190" r="5"/><circle cx="548" cy="188" r="4"/><circle cx="250" cy="250" r="5"/></g>
+ <path fill="#24806c" d="M0 350q90-70 190-30t170-30 200 20 240-10v100H0z"/>
+ <path fill="#f6b93b" d="M250 372q20-120 150-126t160 126z"/>
+ <g stroke="#e9952b" stroke-width="4" stroke-linecap="round" fill="none">
+  <path d="M300 368q10-60 40-92M350 370q0-70 30-108M400 372q-4-80 6-122M450 370q0-70-28-106M500 368q-8-56-40-88"/>
+ </g>
+ <g fill="#1fa58c"><circle cx="210" cy="360" r="34"/><circle cx="600" cy="356" r="38"/><circle cx="650" cy="372" r="26"/><circle cx="160" cy="376" r="24"/></g>
+ <path fill="#163029" d="M0 384q200-22 400-6t400-8v30H0z"/>
+</svg>
