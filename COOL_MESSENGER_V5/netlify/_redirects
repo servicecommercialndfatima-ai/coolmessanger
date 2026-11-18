@@ -1,0 +1,6 @@
+# Netlify ne fait tourner aucun serveur Python : il n'héberge que l'interface.
+# Tout ce qui concerne les comptes et les messages est relayé vers le serveur COOL MESSENGER.
+# Remplacez l'adresse ci-dessous si votre serveur est hébergé ailleurs.
+/api/*     https://cool-messenger-7e02b.containers.snapdeploy.app/api/:splat     200!
+/media/*   https://cool-messenger-7e02b.containers.snapdeploy.app/media/:splat   200!
+/health    https://cool-messenger-7e02b.containers.snapdeploy.app/health         200!

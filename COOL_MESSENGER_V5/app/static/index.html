@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#087f5b">
+<meta name="description" content="COOL MESSENGER - messagerie simple et moderne">
+<link rel="manifest" href="/static/manifest.json">
+<link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/static/icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="COOL">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
+<script src="/static/theme.js"></script>
+<link rel="stylesheet" href="/static/app.css">
+<title>COOL MESSENGER</title>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true">
+ <symbol id="i-logo" viewBox="0 0 24 24"><path fill="currentColor" d="M5 4h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-7.2L7 21.6a.6.6 0 0 1-1-.5V18H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3z"/></symbol>
+ <symbol id="i-send" viewBox="0 0 24 24"><path fill="currentColor" d="M3.4 20.3 21 12.7a.8.8 0 0 0 0-1.4L3.4 3.7a.8.8 0 0 0-1.1.9L4.2 11l9.3 1-9.3 1-1.9 6.4a.8.8 0 0 0 1.1.9z"/></symbol>
+ <symbol id="i-mic" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3"/></symbol>
+ <symbol id="i-back" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m14.5 5-7 7 7 7"/></symbol>
+ <symbol id="i-search" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm9 16-4-4"/></symbol>
+ <symbol id="i-logout" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4m5-4 4-4-4-4m4 4H9"/></symbol>
+ <symbol id="i-sms" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 3h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm3 15h2"/></symbol>
+ <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.2v13.6a.8.8 0 0 0 1.2.7l11-6.8a.8.8 0 0 0 0-1.4l-11-6.8a.8.8 0 0 0-1.2.7z"/></symbol>
+ <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="m6 6 12 12M18 6 6 18"/></symbol>
+ <symbol id="i-palette" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 1 0 0 18c1.4 0 2-1 2-2 0-1.6-1-2 0-3 1.200-1.200 7 .5 7-4.500C21 6.500 17 3 12 3z"/><circle cx="7.500" cy="11" r="1.200" fill="currentColor"/><circle cx="10.500" cy="7.200" r="1.200" fill="currentColor"/><circle cx="15" cy="7.800" r="1.200" fill="currentColor"/></symbol>
+ <symbol id="i-download" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m-4.5-4.5L12 15l4.5-4.5M5 19h14"/></symbol>
+ <symbol id="i-share" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12M8 7l4-4 4 4M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></symbol>
+ <symbol id="i-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M5 4h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-7l-5 3.5V18H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm3 6h8m-8 3.5h5"/></symbol>
+</svg>
+
+<section id="auth" hidden>
+ <button type="button" class="icon-btn theme-fab theme-open" title="Changer de thème" aria-label="Changer de thème"><svg><use href="#i-palette"/></svg></button>
+ <div class="auth-card">
+  <div class="logo"><span class="logo-mark"><svg><use href="#i-logo"/></svg></span>COOL MESSENGER</div>
+  <h1 id="auth-title">Bienvenue !</h1>
+  <p class="muted" id="auth-desc">Connectez-vous pour retrouver vos conversations.</p>
+  <form id="auth-form" novalidate>
+   <div class="register-only" hidden>
+    <label for="display">Nom affiché</label>
+    <input class="field" id="display" maxlength="80" autocomplete="name" placeholder="Ex. Awa Koné">
+   </div>
+   <label for="username">Nom d'utilisateur</label>
+   <input class="field" id="username" maxlength="40" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="Ex. awa.kone">
+   <div class="register-only" hidden>
+    <label for="phone">Téléphone <span class="muted">(facultatif, reste privé)</span></label>
+    <input class="field" id="phone" type="tel" maxlength="30" autocomplete="tel" placeholder="+225 07 00 00 00 00">
+   </div>
+   <label for="password">Mot de passe</label>
+   <div class="password-wrap">
+    <input class="field" id="password" type="password" maxlength="128" autocomplete="current-password" placeholder="8 caractères minimum">
+    <button type="button" class="link" id="show-password" aria-pressed="false">Afficher</button>
+   </div>
+   <p class="error" id="auth-error" role="alert"></p>
+   <button class="primary" id="auth-submit">Se connecter</button>
+  </form>
+  <p class="auth-switch"><span class="muted" id="toggle-label">Nouveau ici ?</span> <button type="button" class="link" id="toggle">Créer un compte</button></p>
+  <p class="auth-install" hidden><button type="button" class="link install-btn"><svg><use href="#i-download"/></svg>Installer l'application sur ce téléphone</button></p>
+ </div>
+</section>
+
+<main id="app" hidden>
+ <aside class="sidebar">
+  <header class="side-head">
+   <div class="logo small"><span class="logo-mark"><svg><use href="#i-logo"/></svg></span>COOL MESSENGER</div>
+   <div class="head-actions">
+    <button class="icon-btn" id="sms-open" title="Envoyer un SMS" aria-label="Envoyer un SMS" hidden><svg><use href="#i-sms"/></svg></button>
+    <button class="icon-btn theme-open" title="Changer de thème" aria-label="Changer de thème"><svg><use href="#i-palette"/></svg></button>
+    <button class="icon-btn" id="logout" title="Se déconnecter" aria-label="Se déconnecter"><svg><use href="#i-logout"/></svg></button>
+   </div>
+  </header>
+  <div class="me-row"><span class="avatar sm" id="me-avatar"></span><div class="me-text"><b id="me-name"></b><span class="muted" id="me-user"></span></div></div>
+  <div class="install-card" id="install-card" hidden>
+   <span class="install-icon"><svg><use href="#i-download"/></svg></span>
+   <div class="install-text"><b>Installer l'application</b><span class="muted">Accès direct depuis l'écran d'accueil</span></div>
+   <button type="button" class="primary install-btn">Installer</button>
+   <button type="button" class="icon-btn" id="install-close" aria-label="Masquer cette suggestion"><svg><use href="#i-close"/></svg></button>
+  </div>
+  <label class="search"><svg><use href="#i-search"/></svg><input id="search" type="search" maxlength="80" placeholder="Rechercher un contact" aria-label="Rechercher un contact" autocomplete="off"></label>
+  <div class="tabs" role="group" aria-label="Filtrer les conversations">
+   <button type="button" class="tab active" data-filter="all" aria-pressed="true">Tous</button>
+   <button type="button" class="tab" data-filter="unread" aria-pressed="false">Non lus <span class="badge" id="unread-count" hidden></span></button>
+  </div>
+  <nav class="contacts" id="contacts" aria-label="Conversations"></nav>
+ </aside>
+
+ <section class="chat">
+  <div class="placeholder" id="placeholder">
+   <svg><use href="#i-chat"/></svg>
+   <b>Vos conversations</b>
+   <span>Sélectionnez un contact pour commencer à discuter.</span>
+  </div>
+  <div class="chat-inner" id="chat-inner" hidden>
+   <header class="chat-head">
+    <button class="icon-btn back" id="back" aria-label="Retour aux conversations"><svg><use href="#i-back"/></svg></button>
+    <span class="avatar" id="chat-avatar"></span>
+    <div class="chat-title"><b id="chat-name"></b><span class="muted" id="chat-user"></span></div>
+   </header>
+   <div class="messages" id="messages" aria-live="polite"></div>
+   <form class="composer" id="composer">
+    <div class="compose-row" id="compose-row">
+     <button type="button" class="icon-btn" id="record" title="Enregistrer un message vocal" aria-label="Enregistrer un message vocal"><svg><use href="#i-mic"/></svg></button>
+     <textarea id="message" rows="1" maxlength="5000" placeholder="Écrire un message" aria-label="Message"></textarea>
+     <button class="icon-btn send" type="submit" id="send" aria-label="Envoyer" disabled><svg><use href="#i-send"/></svg></button>
+    </div>
+    <div class="record-row" id="record-row" hidden>
+     <button type="button" class="icon-btn" id="record-cancel" title="Annuler" aria-label="Annuler l'enregistrement"><svg><use href="#i-close"/></svg></button>
+     <span class="rec-dot"></span><span id="record-time">0:00</span><span class="muted rec-hint">Enregistrement…</span>
+     <button type="button" class="icon-btn send" id="record-send" title="Envoyer le vocal" aria-label="Envoyer le message vocal"><svg><use href="#i-send"/></svg></button>
+    </div>
+   </form>
+  </div>
+ </section>
+</main>
+
+<dialog id="sms-dialog">
+ <form id="sms-form" method="dialog">
+  <h2>Envoyer un SMS</h2>
+  <p class="muted" id="sms-info"></p>
+  <label for="sms-to">Numéro (format international)</label>
+  <input class="field" id="sms-to" type="tel" maxlength="30" placeholder="+225 07 00 00 00 00" required>
+  <label for="sms-body">Message</label>
+  <textarea class="field" id="sms-body" rows="4" maxlength="480" required></textarea>
+  <p class="error" id="sms-error" role="alert"></p>
+  <div class="dialog-actions">
+   <button type="button" class="link" id="sms-cancel">Annuler</button>
+   <button type="submit" class="primary" id="sms-submit">Envoyer</button>
+  </div>
+ </form>
+</dialog>
+
+<dialog id="theme-dialog" aria-labelledby="theme-title">
+ <h2 id="theme-title">Choisir un thème</h2>
+ <p class="muted">Le thème est enregistré sur cet appareil.</p>
+ <div class="theme-grid" id="theme-grid"></div>
+ <div class="dialog-actions"><button type="button" class="primary" id="theme-close">Terminé</button></div>
+</dialog>
+
+<dialog id="ios-install" aria-labelledby="ios-install-title">
+ <h2 id="ios-install-title">Installer sur iPhone</h2>
+ <p class="muted">Apple ne permet pas l'installation en un clic. Trois gestes suffisent :</p>
+ <ol class="ios-steps">
+  <li>Ouvrez cette page dans <b>Safari</b>.</li>
+  <li>Touchez le bouton <b>Partager</b> <span class="inline-icon"><svg><use href="#i-share"/></svg></span> en bas de l'écran.</li>
+  <li>Choisissez <b>Sur l'écran d'accueil</b>, puis <b>Ajouter</b>.</li>
+ </ol>
+ <p class="muted">L'icône COOL apparaît ensuite parmi vos applications et s'ouvre en plein écran.</p>
+ <div class="dialog-actions"><button type="button" class="primary" id="ios-install-close">Compris</button></div>
+</dialog>
+
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="/static/compat.js" defer></script>
+<script src="/static/app.js" defer></script>
+</body>
+</html>

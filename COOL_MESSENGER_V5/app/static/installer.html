@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#087f5b">
+<meta name="description" content="Installer COOL MESSENGER sur iPhone ou Android">
+<link rel="manifest" href="/static/manifest.json">
+<link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/static/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="COOL">
+<script src="/static/theme.js"></script>
+<link rel="stylesheet" href="/static/app.css">
+<link rel="stylesheet" href="/static/installer.css">
+<title>Installer COOL MESSENGER</title>
+</head>
+<body>
+<main class="inst">
+ <header class="inst-head">
+  <img src="/static/icon-192.png" alt="" width="72" height="72" class="inst-icon">
+  <h1>COOL MESSENGER</h1>
+  <p class="muted">Messages, vocaux et thèmes, gratuitement.</p>
+ </header>
+
+ <!-- Déjà installée -->
+ <section class="inst-card" data-show="installed" hidden>
+  <h2>L'application est déjà installée</h2>
+  <p>Vous l'utilisez en ce moment depuis l'écran d'accueil.</p>
+  <a class="primary inst-btn" href="/">Ouvrir COOL MESSENGER</a>
+ </section>
+
+ <!-- iPhone / iPad dans Safari -->
+ <section class="inst-card" data-show="ios-safari" hidden>
+  <h2>Installer sur iPhone</h2>
+  <ol class="inst-steps">
+   <li><span class="num">1</span><div>Touchez le bouton <b>Partager</b> <img src="/static/inst-share.svg" alt="(carré avec une flèche vers le haut)" class="inst-glyph"> en bas de l'écran<span class="muted"> (en haut sur iPad).</span></div></li>
+   <li><span class="num">2</span><div>Faites défiler et touchez <b>Sur l'écran d'accueil</b> <img src="/static/inst-add.svg" alt="(carré avec un plus)" class="inst-glyph">.</div></li>
+   <li><span class="num">3</span><div>Touchez <b>Ajouter</b>, en haut à droite.</div></li>
+  </ol>
+  <p class="muted">L'icône COOL apparaît parmi vos applications. Ouvrez-la depuis l'écran d'accueil, puis connectez-vous : l'application installée a sa propre session.</p>
+  <p class="inst-note">Fonctionne sur tous les iPhone et iPad à partir d'iOS 12 (iPhone 5s et plus récents).</p>
+ </section>
+
+ <!-- iPhone dans un autre navigateur que Safari -->
+ <section class="inst-card" data-show="ios-other" hidden>
+  <h2>Ouvrez cette page dans Safari</h2>
+  <p>Sur iPhone, seul <b>Safari</b> permet d'ajouter l'application à l'écran d'accueil sur toutes les versions d'iOS.</p>
+  <button type="button" class="primary inst-btn" id="copy-link">Copier le lien</button>
+  <p class="muted">Puis ouvrez Safari, touchez la barre d'adresse et collez le lien.</p>
+ </section>
+
+ <!-- Android -->
+ <section class="inst-card" data-show="android" hidden>
+  <h2>Installer sur Android</h2>
+  <a class="primary inst-btn" href="/static/cool-messenger.apk" download="COOL-MESSENGER.apk">Télécharger l'application (APK, 1 Mo)</a>
+  <ol class="inst-steps">
+   <li><span class="num">1</span><div>Ouvrez le fichier téléchargé (notification ou dossier <b>Téléchargements</b>).</div></li>
+   <li><span class="num">2</span><div>Si Android le demande, autorisez l'installation depuis cette source, puis revenez en arrière.</div></li>
+   <li><span class="num">3</span><div>Touchez <b>Installer</b>, puis <b>Ouvrir</b>.</div></li>
+  </ol>
+  <p class="muted">L'application est signée par COOL MESSENGER. Elle ne demande aucune autorisation particulière, sauf le micro quand vous enregistrez un vocal.</p>
+ </section>
+
+ <!-- Ordinateur -->
+ <section class="inst-card" data-show="desktop" hidden>
+  <h2>Ouvrez ce lien sur votre téléphone</h2>
+  <p>Envoyez-vous cette adresse par WhatsApp ou par e-mail, puis ouvrez-la sur le téléphone :</p>
+  <p class="inst-url" id="page-url"></p>
+  <button type="button" class="primary inst-btn" id="copy-link-desktop">Copier le lien</button>
+  <p class="muted">Sur ordinateur, vous pouvez aussi utiliser COOL MESSENGER directement dans le navigateur.</p>
+  <a class="link" href="/">Ouvrir COOL MESSENGER ici</a>
+ </section>
+
+ <p class="inst-foot"><a class="link" href="/">Continuer dans le navigateur</a></p>
+</main>
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="/static/installer.js" defer></script>
+</body>
+</html>
