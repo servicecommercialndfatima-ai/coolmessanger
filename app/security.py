@@ -35,17 +35,18 @@ def verify_password(password: str, hashed: str) -> bool:
 DUMMY_HASH = hash_password(secrets.token_hex(16))
 
 
-def create_token(user_id: int) -> str:
+def create_token(user_id: int, version: int = 0) -> str:
     now = datetime.now(timezone.utc)
-    payload = {"sub": str(user_id), "iat": now, "exp": now + timedelta(days=TOKEN_DAYS)}
+    payload = {"sub": str(user_id), "ver": int(version or 0), "iat": now, "exp": now + timedelta(days=TOKEN_DAYS)}
     return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
 
 
-def read_token(token: str) -> int | None:
+def read_token(token: str) -> tuple[int, int] | None:
+    """Renvoie (identifiant, version de session). Les jetons des versions précédentes valent version 0."""
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM], options={"require": ["exp", "sub"]})
-        return int(payload["sub"])
-    except (jwt.PyJWTError, ValueError, KeyError):
+        return int(payload["sub"]), int(payload.get("ver", 0))
+    except (jwt.PyJWTError, ValueError, KeyError, TypeError):
         return None
 
 

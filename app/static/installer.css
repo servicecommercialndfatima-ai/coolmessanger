@@ -1,0 +1,16 @@
+.inst{max-width:520px;margin:0 auto;padding:28px 16px calc(28px + env(safe-area-inset-bottom))}
+.inst-head{text-align:center;margin-bottom:18px}
+.inst-icon{border-radius:20px;box-shadow:0 8px 24px #0f2b2030;display:block;margin:0 auto 14px}
+.inst-head h1{margin:0 0 4px;font-size:24px;color:var(--text)}
+.inst-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px 20px;margin-bottom:14px;box-shadow:var(--shadow)}
+.inst-card h2{margin:0 0 12px;font-size:19px}
+.inst-card p{line-height:1.5}
+.inst-btn{display:block;text-align:center;text-decoration:none;margin:14px 0;font-size:16px;padding:14px 18px;width:100%}
+.inst-steps{list-style:none;padding:0;margin:16px 0}
+.inst-steps li{display:flex;align-items:flex-start;margin:0 0 14px;line-height:1.5}
+.inst-steps .num{flex:none;width:28px;height:28px;border-radius:50%;background:var(--btn);color:var(--on-btn);display:inline-block;text-align:center;line-height:28px;font-weight:700;margin-right:12px}
+.inst-glyph{width:20px;height:20px;vertical-align:-4px;margin:0 2px}
+.inst-note{background:var(--accent-soft);border-radius:12px;padding:10px 12px;font-size:13px}
+.inst-url{background:var(--bg);border-radius:10px;padding:10px 12px;font-family:Consolas,monospace;font-size:14px;word-break:break-all}
+.inst-foot{text-align:center}
+.inst .link{text-decoration:none;display:inline-block}

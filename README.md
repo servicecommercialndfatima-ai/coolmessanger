@@ -7,7 +7,21 @@ Messagerie web installable (Windows, Android, iOS, navigateur) avec un serveur P
 - Messages texte entre comptes, historique, actualisation automatique, compteur de non-lus.
 - Messages vocaux (micro du navigateur) : un clic pour démarrer, un clic pour envoyer ou annuler.
 - SMS classiques via Twilio (facultatif), avec quota quotidien par utilisateur.
-- Interface adaptée au mobile et installable (PWA).
+- Paramètres (icône roue dentée) : photo de profil (photo du téléphone ou motif aléatoire), nom affiché,
+  nom d'utilisateur, numéro de téléphone, mot de passe (ferme les sessions des autres appareils),
+  liste des contacts bloqués, déconnexion.
+- Blocage : un contact bloqué ne peut plus vous écrire, et ses messages dans les groupes vous sont masqués.
+- Fichiers : photos (réduites avant l'envoi, 8 Mo max), vidéos (20 Mo max), fichiers audio (15 Mo max),
+  vocaux. Ils sont stockés dans la base : surveillez l'espace utilisé (1 Go gratuit chez Neon).
+- Groupes : création, renommage, ajout et retrait de membres par les administrateurs, départ du groupe.
+  La base existante est mise à niveau automatiquement au démarrage, sans perte de données.
+- Page d'installation à partager : `/installer`. Elle détecte l'appareil : téléchargement de l'APK
+  sur Android, guide « Sur l'écran d'accueil » sur iPhone (iOS 12 et plus, iPhone 5s et plus récents).
+  Pour mettre à jour l'APK, remplacer `app/static/cool-messenger.apk`.
+- Application installable sur Android et iPhone (PWA) : bouton « Installer » dans l'application,
+  guide pas à pas sur iPhone, plein écran, clavier et encoche gérés. Pour publier sur le Play Store,
+  générer le paquet Android sur https://www.pwabuilder.com à partir de l'adresse du site, puis renseigner
+  `ANDROID_ASSETLINKS` avec le fichier assetlinks.json fourni.
 - Six thèmes au choix (icône palette) : Classique, Nuit, Douceur, Crépuscule, Forêt, Corail. Le choix est
   mémorisé sur l'appareil. Pour en ajouter un : un bloc `[data-theme="nom"]` dans `app/static/app.css`,
   puis son nom dans les listes de `theme.js` et `app.js`.

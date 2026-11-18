@@ -57,8 +57,19 @@ ANDROID_ASSETLINKS = os.getenv("ANDROID_ASSETLINKS", "").strip()
 # Documentation interactive (/docs) désactivée sauf demande explicite.
 ENABLE_DOCS = os.getenv("ENABLE_DOCS", "").strip().lower() in {"1", "true", "yes"}
 
-MAX_AUDIO_BYTES = 12 * 1024 * 1024
-MAX_BODY_BYTES = MAX_AUDIO_BYTES + 1024 * 1024
+MB = 1024 * 1024
+# Taille maximale par fichier envoyé. Les fichiers sont stockés dans la base (1 Go gratuit chez Neon) :
+# des limites modestes évitent de la remplir avec quelques vidéos.
+MAX_FILE_BYTES = {
+    "voice": 12 * MB,
+    "audio": 15 * MB,
+    "image": 8 * MB,   # les photos sont déjà réduites par l'application avant l'envoi
+    "video": 20 * MB,
+}
+MAX_AVATAR_BYTES = 1 * MB
+MAX_AUDIO_BYTES = MAX_FILE_BYTES["voice"]
+MAX_BODY_BYTES = max(MAX_FILE_BYTES.values()) + 1 * MB
+MAX_GROUP_MEMBERS = 100
 
 TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID", "").strip()
 TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN", "").strip()
