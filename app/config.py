@@ -50,6 +50,10 @@ def _load_secret_key() -> str:
 SECRET_KEY = _load_secret_key()
 TOKEN_DAYS = 7
 
+# Application Android (paquet généré par PWABuilder) : contenu du fichier assetlinks.json qu'il fournit.
+# Servi à /.well-known/assetlinks.json ; il permet à l'application de s'ouvrir sans barre d'adresse.
+ANDROID_ASSETLINKS = os.getenv("ANDROID_ASSETLINKS", "").strip()
+
 # Documentation interactive (/docs) désactivée sauf demande explicite.
 ENABLE_DOCS = os.getenv("ENABLE_DOCS", "").strip().lower() in {"1", "true", "yes"}
 

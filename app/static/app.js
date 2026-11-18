@@ -449,6 +449,52 @@ $('sms-form').onsubmit = async e => {
   finally { $('sms-submit').disabled = false; }
 };
 
+/* ---------- Installation sur téléphone ---------- */
+const isStandalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+let installPrompt = null;
+function installDismissed() { try { return localStorage.getItem('cm_install_hidden') === '1'; } catch { return false; } }
+function refreshInstall() {
+  const possible = !isStandalone && (installPrompt !== null || isIOS);
+  $('install-card').hidden = !possible || installDismissed();
+  document.querySelector('.auth-install').hidden = !possible;
+}
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); installPrompt = e; refreshInstall(); });
+window.addEventListener('appinstalled', () => { installPrompt = null; refreshInstall(); toast('Application installée sur cet appareil.'); });
+document.querySelectorAll('.install-btn').forEach(b => {
+  b.onclick = async () => {
+    if (installPrompt) {
+      const prompt = installPrompt;
+      installPrompt = null;
+      prompt.prompt();
+      await prompt.userChoice.catch(() => {});
+      refreshInstall();
+    } else if (isIOS) {
+      $('ios-install').showModal();
+    }
+  };
+});
+$('install-close').onclick = () => {
+  try { localStorage.setItem('cm_install_hidden', '1'); } catch {}
+  refreshInstall();
+};
+$('ios-install-close').onclick = () => $('ios-install').close();
+refreshInstall();
+
+/* Clavier du téléphone : l'iPhone ne réduit pas la page quand le clavier s'ouvre,
+   la zone de saisie passerait dessous. On ajuste la hauteur à la partie visible. */
+if (window.visualViewport) {
+  const fit = () => {
+    const box = $('messages');
+    const nearBottom = box.scrollHeight - box.scrollTop - box.clientHeight < 120;
+    document.documentElement.style.setProperty('--app-h', Math.round(visualViewport.height) + 'px');
+    if (window.scrollY) window.scrollTo(0, 0);
+    if (nearBottom) box.scrollTop = box.scrollHeight;
+  };
+  visualViewport.addEventListener('resize', fit);
+  fit();
+}
+
 /* ---------- Démarrage ---------- */
 applyAuthMode();
 if (token) start(); else $('auth').hidden = false;

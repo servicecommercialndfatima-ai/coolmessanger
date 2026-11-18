@@ -1,3 +1,4 @@
+import json
 import logging
 import re
 import uuid
@@ -213,6 +214,19 @@ def home():
 def service_worker():
     # Servi à la racine pour que son périmètre couvre toute l'application.
     return FileResponse(STATIC / "sw.js", media_type="text/javascript")
+
+
+@app.get("/.well-known/assetlinks.json", include_in_schema=False)
+def android_asset_links():
+    """Preuve, pour Android, que l'application installée appartient bien à ce site."""
+    if not config.ANDROID_ASSETLINKS:
+        raise HTTPException(404, "Non configuré.")
+    try:
+        data = json.loads(config.ANDROID_ASSETLINKS)
+    except ValueError:
+        logging.getLogger("cool_messenger").error("ANDROID_ASSETLINKS n'est pas un JSON valide.")
+        raise HTTPException(404, "Non configuré.")
+    return JSONResponse(data, headers={"Cache-Control": "public, max-age=3600"})
 
 
 @app.get("/health")

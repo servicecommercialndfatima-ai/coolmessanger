@@ -1,6 +1,6 @@
 // Met en cache l'habillage de l'application pour un démarrage rapide.
 // Les données privées (/api, /media) ne sont jamais mises en cache.
-const CACHE = 'cool-shell-v3';
+const CACHE = 'cool-shell-v4';
 const SHELL = ['/', '/static/app.css', '/static/app.js', '/static/theme.js', '/static/illus-crepuscule.svg', '/static/illus-foret.svg', '/static/illus-corail.svg', '/static/manifest.json', '/static/icon.svg', '/static/icon-192.png'];
 
 self.addEventListener('install', e => {
