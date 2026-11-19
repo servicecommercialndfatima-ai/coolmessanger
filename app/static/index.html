@@ -55,25 +55,26 @@
  <symbol id="i-music" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm12-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/></symbol>
  <symbol id="i-block" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM5.6 5.6l12.8 12.8"/></symbol>
  <symbol id="i-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M5 4h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-7l-5 3.5V18H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm3 6h8m-8 3.5h5"/></symbol>
+ <symbol id="i-compass" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm3.5 5.5-2 5-5 2 2-5z"/></symbol>
+ <symbol id="i-inbox" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 19a3 3 0 0 0-6 0M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm6-3 2 2 3-3"/></symbol>
+ <symbol id="i-news" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 5h13v14H6a2 2 0 0 1-2-2zm13 4h3v8a2 2 0 0 1-2 2M7.5 9h6M7.5 12.5h6M7.5 16h4"/></symbol>
+ <symbol id="i-flag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 21V4m0 0h11l-2 4 2 4H5"/></symbol>
+ <symbol id="i-bell" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9a6 6 0 0 1 12 0c0 6 2.500 7.500 2.500 7.500h-17S6 15 6 9zm4 11a2 2 0 0 0 4 0"/></symbol>
+ <symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
+ <symbol id="i-image" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm0 13 5-5 4 4 2-2 4 4"/></symbol>
+ <symbol id="i-shield" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3 4 6v6c0 5 3.500 8 8 9 4.500-1 8-4 8-9V6z"/></symbol>
 </svg>
 
+<!-- ============ Connexion ============ -->
 <section id="auth" hidden>
  <button type="button" class="icon-btn theme-fab theme-open" title="Changer de thème" aria-label="Changer de thème"><svg><use href="#i-palette"/></svg></button>
- <div class="auth-card">
-  <img class="brand-logo" src="/static/logo-512.png" alt="COOL MESSENGER" width="150" height="142">
-  <h1 id="auth-title">Bienvenue !</h1>
-  <p class="muted" id="auth-desc">Connectez-vous pour retrouver vos conversations.</p>
+ <div class="auth-card" id="login-card">
+  <img class="brand-logo" src="/static/logo-512.png" alt="COOL MESSENGER" width="150" height="134">
+  <h1>Bienvenue !</h1>
+  <p class="muted center">Business, Amour ou Gbairai : connectez-vous pour retrouver vos rubriques.</p>
   <form id="auth-form" novalidate>
-   <div class="register-only" hidden>
-    <label for="display">Nom affiché</label>
-    <input class="field" id="display" maxlength="80" autocomplete="name" placeholder="Ex. Awa Koné">
-   </div>
    <label for="username">Nom d'utilisateur</label>
    <input class="field" id="username" maxlength="40" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="Ex. awa.kone">
-   <div class="register-only" hidden>
-    <label for="phone">Téléphone <span class="muted">(facultatif, reste privé)</span></label>
-    <input class="field" id="phone" type="tel" maxlength="30" autocomplete="tel" placeholder="+225 07 00 00 00 00">
-   </div>
    <label for="password">Mot de passe</label>
    <div class="password-wrap">
     <input class="field" id="password" type="password" maxlength="128" autocomplete="current-password" placeholder="8 caractères minimum">
@@ -82,11 +83,25 @@
    <p class="error" id="auth-error" role="alert"></p>
    <button class="primary" id="auth-submit">Se connecter</button>
   </form>
-  <p class="auth-switch"><span class="muted" id="toggle-label">Nouveau ici ?</span> <button type="button" class="link" id="toggle">Créer un compte</button></p>
+  <p class="auth-switch"><span class="muted">Nouveau ici ?</span> <button type="button" class="link" id="toggle">Créer un compte</button></p>
   <p class="auth-install" hidden><button type="button" class="link install-btn"><svg><use href="#i-download"/></svg>Installer l'application sur ce téléphone</button></p>
+ </div>
+
+ <!-- Inscription et choix des rubriques, en plusieurs étapes -->
+ <div class="auth-card wizard" id="wizard" hidden>
+  <div class="wiz-top">
+   <button type="button" class="icon-btn" id="wiz-back" aria-label="Étape précédente"><svg><use href="#i-back"/></svg></button>
+   <div class="wiz-dots" id="wiz-dots"></div>
+   <span class="wiz-spacer"></span>
+  </div>
+  <div id="wiz-body"></div>
+  <p class="error" id="wiz-error" role="alert"></p>
+  <button type="button" class="primary wiz-next" id="wiz-next">Continuer</button>
+  <p class="auth-switch" id="wiz-login"><span class="muted">Déjà inscrit ?</span> <button type="button" class="link" id="wiz-to-login">Se connecter</button></p>
  </div>
 </section>
 
+<!-- ============ Application ============ -->
 <main id="app" hidden>
  <aside class="sidebar">
   <header class="side-head">
@@ -94,32 +109,63 @@
    <div class="head-actions">
     <button class="icon-btn" id="sms-open" title="Envoyer un SMS" aria-label="Envoyer un SMS" hidden><svg><use href="#i-sms"/></svg></button>
     <button class="icon-btn theme-open" title="Changer de thème" aria-label="Changer de thème"><svg><use href="#i-palette"/></svg></button>
-    <button class="icon-btn" id="group-new" title="Nouveau groupe" aria-label="Créer un groupe"><svg><use href="#i-group"/></svg></button>
+    <button class="icon-btn" id="admin-open" title="Administration" aria-label="Administration" hidden><svg><use href="#i-shield"/></svg><span class="dot-badge" id="admin-badge" hidden></span></button>
     <button class="icon-btn" id="settings-open" title="Paramètres" aria-label="Paramètres"><svg><use href="#i-gear"/></svg></button>
    </div>
   </header>
-  <div class="me-row" id="me-row" role="button" tabindex="0" title="Modifier mon profil"><span class="avatar sm" id="me-avatar"></span><div class="me-text"><b id="me-name"></b><span class="muted" id="me-user"></span></div></div>
+  <nav class="space-tabs" id="space-tabs" aria-label="Rubriques"></nav>
+  <div class="me-row" id="me-row" role="button" tabindex="0" title="Modifier mon profil"><span class="avatar sm" id="me-avatar"></span><div class="me-text"><b id="me-name"></b><span class="muted" id="me-sub"></span></div></div>
   <div class="install-card" id="install-card" hidden>
    <span class="install-icon"><svg><use href="#i-download"/></svg></span>
    <div class="install-text"><b>Installer l'application</b><span class="muted">Accès direct depuis l'écran d'accueil</span></div>
    <button type="button" class="primary install-btn">Installer</button>
    <button type="button" class="icon-btn" id="install-close" aria-label="Masquer cette suggestion"><svg><use href="#i-close"/></svg></button>
   </div>
-  <label class="search"><svg><use href="#i-search"/></svg><input id="search" type="search" maxlength="80" placeholder="Rechercher un contact ou un groupe" aria-label="Rechercher un contact ou un groupe" autocomplete="off"></label>
-  <div class="tabs" role="group" aria-label="Filtrer les conversations">
-   <button type="button" class="tab active" data-filter="all" aria-pressed="true">Tous</button>
-   <button type="button" class="tab" data-filter="unread" aria-pressed="false">Non lus <span class="badge" id="unread-count" hidden></span></button>
-   <button type="button" class="tab" data-filter="groups" aria-pressed="false">Groupes</button>
+  <div class="install-card" id="notif-card" hidden>
+   <span class="install-icon"><svg><use href="#i-bell"/></svg></span>
+   <div class="install-text"><b>Activer les notifications</b><span class="muted">Être prévenu même application fermée</span></div>
+   <button type="button" class="primary" id="notif-enable">Activer</button>
+   <button type="button" class="icon-btn" id="notif-close" aria-label="Masquer cette suggestion"><svg><use href="#i-close"/></svg></button>
   </div>
-  <nav class="contacts" id="contacts" aria-label="Conversations"></nav>
+  <div class="tabs section-tabs" id="section-tabs" role="tablist" aria-label="Sections"></div>
+  <div class="list-tools">
+   <label class="search"><svg><use href="#i-search"/></svg><input id="search" type="search" maxlength="80" placeholder="Rechercher" aria-label="Rechercher" autocomplete="off"></label>
+   <div class="filters" id="filters" hidden>
+    <select class="field small" id="filter-sector" aria-label="Secteur d'activité"><option value="">Tous les secteurs</option></select>
+    <input class="field small" id="filter-city" maxlength="80" placeholder="Ville" aria-label="Ville">
+   </div>
+   <button type="button" class="link new-group" id="group-new"><svg><use href="#i-plus"/></svg>Nouveau groupe</button>
+  </div>
+  <nav class="contacts" id="contacts" aria-label="Liste"></nav>
  </aside>
 
  <section class="chat">
   <div class="placeholder" id="placeholder">
-   <svg><use href="#i-chat"/></svg>
-   <b>Vos conversations</b>
-   <span>Sélectionnez un contact pour commencer à discuter.</span>
+   <span class="space-emblem" id="placeholder-emblem"></span>
+   <b id="placeholder-title">Vos conversations</b>
+   <span id="placeholder-text">Sélectionnez une conversation.</span>
   </div>
+
+  <!-- Fil des publications (Business) -->
+  <div class="feed" id="feed" hidden>
+   <header class="chat-head">
+    <button class="icon-btn back" id="feed-back" aria-label="Retour"><svg><use href="#i-back"/></svg></button>
+    <div class="chat-title"><b>Publications Business</b><span class="muted">Faites connaître votre activité</span></div>
+   </header>
+   <div class="feed-scroll" id="feed-scroll">
+    <form class="post-composer" id="post-form">
+     <textarea class="field" id="post-body" rows="3" maxlength="3000" placeholder="Annoncez un produit, un service, une offre de partenariat…"></textarea>
+     <div class="post-tools">
+      <button type="button" class="link" id="post-image-pick"><svg><use href="#i-image"/></svg><span id="post-image-name">Ajouter une image</span></button>
+      <input type="file" id="post-image" accept="image/*" hidden>
+      <button type="submit" class="primary" id="post-submit">Publier</button>
+     </div>
+    </form>
+    <div id="feed-list"></div>
+    <button type="button" class="link feed-more" id="feed-more" hidden>Voir plus de publications</button>
+   </div>
+  </div>
+
   <div class="chat-inner" id="chat-inner" hidden>
    <header class="chat-head">
     <button class="icon-btn back" id="back" aria-label="Retour aux conversations"><svg><use href="#i-back"/></svg></button>
@@ -154,6 +200,47 @@
   </div>
  </section>
 </main>
+
+<!-- ============ Fenêtres ============ -->
+<dialog id="profile-dialog" class="wide" aria-labelledby="profile-title">
+ <div class="dlg-head"><h2 id="profile-title">Profil</h2><button type="button" class="icon-btn dlg-close" aria-label="Fermer"><svg><use href="#i-close"/></svg></button></div>
+ <div id="profile-body"></div>
+</dialog>
+
+<dialog id="report-dialog" class="wide" aria-labelledby="report-title">
+ <form id="report-form" novalidate>
+  <div class="dlg-head"><h2 id="report-title">Signaler</h2><button type="button" class="icon-btn dlg-close" aria-label="Fermer"><svg><use href="#i-close"/></svg></button></div>
+  <p class="muted" id="report-who"></p>
+  <label for="report-reason">Motif</label>
+  <select class="field" id="report-reason"></select>
+  <label for="report-details">Détails <span class="muted">(facultatif)</span></label>
+  <textarea class="field" id="report-details" rows="4" maxlength="1000" placeholder="Décrivez ce qui s'est passé"></textarea>
+  <p class="muted">L'administrateur examinera votre signalement. La personne signalée n'est pas prévenue.</p>
+  <p class="error" id="report-error" role="alert"></p>
+  <div class="dialog-actions"><button type="submit" class="primary" id="report-submit">Envoyer le signalement</button></div>
+ </form>
+</dialog>
+
+<dialog id="join-dialog" class="wide" aria-labelledby="join-title">
+ <form id="join-form" novalidate>
+  <div class="dlg-head"><h2 id="join-title">Rejoindre une rubrique</h2><button type="button" class="icon-btn dlg-close" aria-label="Fermer"><svg><use href="#i-close"/></svg></button></div>
+  <div id="join-body"></div>
+  <p class="error" id="join-error" role="alert"></p>
+  <div class="dialog-actions"><button type="submit" class="primary" id="join-submit">Rejoindre</button></div>
+ </form>
+</dialog>
+
+<dialog id="admin-dialog" class="wide xwide" aria-labelledby="admin-title">
+ <div class="dlg-head"><h2 id="admin-title">Administration</h2><button type="button" class="icon-btn dlg-close" aria-label="Fermer"><svg><use href="#i-close"/></svg></button></div>
+ <div class="admin-stats" id="admin-stats"></div>
+ <div class="tabs" role="tablist">
+  <button type="button" class="tab active" data-admin="open">Signalements</button>
+  <button type="button" class="tab" data-admin="closed">Traités</button>
+  <button type="button" class="tab" data-admin="users">Comptes</button>
+ </div>
+ <input class="field" id="admin-search" type="search" maxlength="80" placeholder="Rechercher un compte (identifiant ou nom)" hidden>
+ <div id="admin-body"></div>
+</dialog>
 
 <dialog id="sms-dialog">
  <form id="sms-form" method="dialog">
@@ -194,7 +281,7 @@
  <div class="dlg-head"><h2 id="settings-title">Paramètres</h2><button type="button" class="icon-btn dlg-close" aria-label="Fermer"><svg><use href="#i-close"/></svg></button></div>
 
  <section class="set-section">
-  <h3>Photo de profil</h3>
+  <h3 id="set-profile-title">Mon profil</h3>
   <div class="avatar-edit">
    <span class="avatar xl" id="set-avatar"></span>
    <div class="avatar-actions">
@@ -204,15 +291,35 @@
     <input type="file" id="avatar-input" accept="image/*" hidden>
    </div>
   </div>
+  <form id="space-profile-form" novalidate>
+   <div id="space-profile-fields"></div>
+   <p class="error" id="space-profile-error" role="alert"></p>
+   <button type="submit" class="primary" id="space-profile-save">Enregistrer le profil</button>
+  </form>
+ </section>
+
+ <section class="set-section">
+  <h3>Mes rubriques</h3>
+  <div id="my-spaces" class="my-spaces"></div>
+ </section>
+
+ <section class="set-section">
+  <h3>Sons et notifications</h3>
+  <label for="sound-choice">Son à la réception d'un message</label>
+  <div class="inline-form">
+   <select class="field" id="sound-choice"></select>
+   <button type="button" class="link" id="sound-test">Écouter</button>
+  </div>
+  <label class="check"><input type="checkbox" id="vibrate-choice"> Faire vibrer le téléphone (Android)</label>
+  <div id="push-status" class="push-status"></div>
  </section>
 
  <form class="set-section" id="profile-form" novalidate>
-  <h3>Profil</h3>
-  <label for="set-display">Nom affiché</label>
-  <input class="field" id="set-display" maxlength="80" autocomplete="name">
-  <label for="set-username">Nom d'utilisateur</label>
+  <h3>Compte</h3>
+  <p class="muted">Ces informations ne sont jamais montrées aux autres membres.</p>
+  <label for="set-username">Nom d'utilisateur (pour se connecter)</label>
   <input class="field" id="set-username" maxlength="40" autocomplete="username" autocapitalize="none" spellcheck="false">
-  <label for="set-phone">Numéro de téléphone <span class="muted">(privé, jamais montré aux autres)</span></label>
+  <label for="set-phone">Numéro de téléphone</label>
   <input class="field" id="set-phone" type="tel" maxlength="30" autocomplete="tel" placeholder="+225 07 00 00 00 00">
   <p class="error" id="profile-error" role="alert"></p>
   <button type="submit" class="primary" id="profile-save">Enregistrer</button>
@@ -238,6 +345,7 @@
  </section>
 
  <section class="set-section set-last">
+  <a class="link" href="/conditions" target="_blank" rel="noopener">Conditions d'utilisation et confidentialité</a>
   <button type="button" class="link danger" id="logout"><svg><use href="#i-logout"/></svg>Se déconnecter</button>
  </section>
 </dialog>
@@ -252,7 +360,7 @@
   <div class="dlg-head"><h2 id="group-title">Nouveau groupe</h2><button type="button" class="icon-btn dlg-close" aria-label="Fermer"><svg><use href="#i-close"/></svg></button></div>
   <div id="group-name-wrap">
    <label for="group-name">Nom du groupe</label>
-   <input class="field" id="group-name" maxlength="80" placeholder="Ex. Équipe de la pharmacie">
+   <input class="field" id="group-name" maxlength="80" placeholder="Ex. Équipe Cool">
   </div>
   <label for="group-search">Membres</label>
   <input class="field" id="group-search" type="search" maxlength="80" placeholder="Rechercher un contact" autocomplete="off">

@@ -90,8 +90,20 @@ def init_db():
             "avatar_data": BLOB,
             "avatar_type": "VARCHAR(40)",
             "avatar_version": "INTEGER NOT NULL DEFAULT 0",
+            # Comptes existants : ils choisiront leurs rubriques à la prochaine connexion.
+            "onboarded": "BOOLEAN NOT NULL DEFAULT " + ("0" if IS_SQLITE else "FALSE"),
+            "terms_accepted_at": "TIMESTAMP",
+            "suspended_at": "TIMESTAMP",
+            "suspended_reason": "VARCHAR(300)",
+        },
+        "groups": {
+            "space": "VARCHAR(10) NOT NULL DEFAULT 'gbairai'",
+        },
+        "blocks": {
+            "space": "VARCHAR(10)",
         },
     }
+    additions["messages"]["space"] = "VARCHAR(10) NOT NULL DEFAULT 'gbairai'"
     for table, wanted in additions.items():
         existing = _columns(table)
         with engine.begin() as conn:
@@ -105,6 +117,41 @@ def init_db():
         conn.execute(text("UPDATE messages SET kind = 'voice' WHERE media_path IS NOT NULL AND kind IS NULL"))
         conn.execute(text("UPDATE messages SET media_size = length(media_data) "
                           "WHERE media_data IS NOT NULL AND media_size IS NULL"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS ix_messages_space ON messages (space)"))
+
+    _migrate_to_spaces()
+
+
+def _migrate_to_spaces():
+    """Une seule fois : les comptes et conversations d'avant les rubriques vont dans Gbairai."""
+    from .models import AppSetting, ContactRequest, Message, Profile, User
+
+    db = SessionLocal()
+    try:
+        if db.get(AppSetting, "migrated_spaces_v1"):
+            return
+        with_profile = {uid for (uid,) in db.query(Profile.user_id)}
+        moved = 0
+        users = db.query(User)
+        if with_profile:
+            users = users.filter(User.id.notin_(with_profile))
+        for user in users:
+            db.add(Profile(user_id=user.id, space="gbairai", display_name=user.display_name,
+                           avatar_data=user.avatar_data, avatar_type=user.avatar_type,
+                           avatar_version=user.avatar_version or 0,
+                           created_at=user.created_at, updated_at=user.created_at))
+            moved += 1
+        # Ceux qui se parlaient déjà sont reliés d'office : pas de demande à refaire.
+        pairs = {tuple(sorted(p)) for p in db.query(Message.sender_id, Message.recipient_id)
+                 .filter(Message.group_id.is_(None), Message.recipient_id.isnot(None)).distinct()}
+        for a, b in pairs:
+            db.add(ContactRequest(space="gbairai", from_user_id=a, to_user_id=b, status="accepted"))
+        db.add(AppSetting(key="migrated_spaces_v1", value="1"))
+        db.commit()
+        if moved or pairs:
+            log.info("Rubriques : %s comptes et %s conversations placés dans Gbairai.", moved, len(pairs))
+    finally:
+        db.close()
 
 
 def get_db():

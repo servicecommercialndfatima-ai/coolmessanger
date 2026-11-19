@@ -7,6 +7,15 @@ Messagerie web installable (Windows, Android, iOS, navigateur) avec un serveur P
 - Messages texte entre comptes, historique, actualisation automatique, compteur de non-lus.
 - Messages vocaux (micro du navigateur) : un clic pour démarrer, un clic pour envoyer ou annuler.
 - SMS classiques via Twilio (facultatif), avec quota quotidien par utilisateur.
+- **Trois rubriques indépendantes**, choisies à l'inscription (au moins une) : Business (fiche entreprise,
+  annuaire par secteur, publications, contact direct), Amour (18 ans et plus, profils compatibles,
+  demande de contact obligatoire, notifications discrètes) et Gbairai (profils, demandes, messages et groupes).
+  Un profil distinct par rubrique, sans lien visible entre eux. Les comptes d'avant les rubriques
+  sont placés dans Gbairai et choisissent leurs rubriques à la connexion.
+- Notifications : son au choix et vibration quand l'application est ouverte ; notifications du téléphone
+  application fermée (Android, et iPhone iOS 16.4+ si l'application est installée sur l'écran d'accueil).
+- Signalements et modération : définir `ADMIN_USERNAMES` ; l'icône bouclier ouvre l'espace administrateur
+  (signalements, suspension de comptes, suppression de publications, taille de la base).
 - Paramètres (icône roue dentée) : photo de profil (photo du téléphone ou motif aléatoire), nom affiché,
   nom d'utilisateur, numéro de téléphone, mot de passe (ferme les sessions des autres appareils),
   liste des contacts bloqués, déconnexion.

@@ -70,6 +70,12 @@ MAX_AVATAR_BYTES = 1 * MB
 MAX_AUDIO_BYTES = MAX_FILE_BYTES["voice"]
 MAX_BODY_BYTES = max(MAX_FILE_BYTES.values()) + 1 * MB
 MAX_GROUP_MEMBERS = 100
+MAX_POST_IMAGE_BYTES = 6 * MB
+
+# Comptes administrateurs (modération), séparés par des virgules. Ex. : ADMIN_USERNAMES=fatima
+ADMIN_USERNAMES = {u.strip().lower() for u in os.getenv("ADMIN_USERNAMES", "").split(",") if u.strip()}
+# Contact indiqué aux services de notification (obligatoire pour eux). Une adresse générique suffit.
+PUSH_CONTACT = os.getenv("PUSH_CONTACT", "").strip() or "mailto:contact@coolmessenger.app"
 
 TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID", "").strip()
 TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN", "").strip()
