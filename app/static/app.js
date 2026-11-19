@@ -1070,6 +1070,22 @@ if (window.visualViewport) {
   fit();
 }
 
+/* ---------- Animation de démarrage ---------- */
+(function () {
+  const splash = $('splash');
+  if (!splash) return;
+  const remove = () => { if (splash.parentNode) splash.parentNode.removeChild(splash); };
+  splash.addEventListener('animationend', e => { if (e.target === splash) remove(); });
+  setTimeout(remove, 3400); // sécurité si l'événement de fin n'arrive pas (onglet en arrière-plan…)
+  // Toucher l'écran passe l'animation.
+  splash.addEventListener('click', () => {
+    splash.style.transition = 'opacity .25s';
+    splash.style.opacity = '0';
+    setTimeout(remove, 260);
+  });
+  if (document.documentElement.className.indexOf('splash-seen') >= 0) remove();
+})();
+
 /* ---------- Démarrage ---------- */
 applyAuthMode();
 if (token) start(); else $('auth').hidden = false;

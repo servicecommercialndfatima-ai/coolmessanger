@@ -393,3 +393,99 @@ dialog.photo-view .dlg-close{position:absolute;top:8px;right:8px;background:#000
 }
 .side-head .logo{white-space:nowrap;font-size:14px;min-width:0}
 .head-actions .icon-btn{width:38px;height:38px}
+
+/* =====================================================================
+   Nouveau logo
+   ===================================================================== */
+.brand-logo{display:block;width:150px;height:auto;margin:-6px auto 0;filter:drop-shadow(0 8px 14px rgba(200,60,10,.22))}
+.auth-card h1{text-align:center}
+#auth-desc{text-align:center}
+.logo-img{width:36px;height:auto;flex:none;filter:drop-shadow(0 2px 4px rgba(200,60,10,.25))}
+[data-theme="crepuscule"] .auth-card .brand-logo{margin-top:-24px}
+
+/* =====================================================================
+   Animation de démarrage : chute, rebonds élastiques, éclaboussure, reflet
+   ===================================================================== */
+#splash{position:fixed;top:0;left:0;right:0;bottom:0;z-index:100;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;cursor:pointer;
+  animation:splash-out .45s ease-in 2.75s forwards}
+.splash-seen #splash{display:none}
+.splash-glow{position:absolute;top:0;left:0;right:0;bottom:0;
+  background:radial-gradient(circle at 30% 35%,rgba(255,140,40,.20),transparent 45%),radial-gradient(circle at 72% 70%,rgba(30,170,70,.16),transparent 45%);
+  opacity:0;animation:splash-fade .8s ease-out .35s forwards}
+.splash-stage{position:relative;width:min(58vw,260px);height:min(58vw,260px)}
+.splash-jump{position:absolute;top:0;left:0;right:0;bottom:0;transform:translateY(-80vh);
+  animation:splash-jump 1.45s .1s both}
+.splash-squash{position:absolute;top:0;left:0;right:0;bottom:0;transform-origin:50% 100%;
+  animation:splash-squash 1.45s .1s both,splash-wobble .6s 1.6s ease-in-out forwards}
+.splash-logo{width:100%;height:100%;object-fit:contain;display:block}
+/* Reflet lumineux qui balaie uniquement le logo (masque à sa forme) */
+.splash-shine{position:absolute;top:0;left:0;right:0;bottom:0;
+  background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.75) 48%,transparent 60%) no-repeat;background-size:250% 100%;background-position:150% 0;
+  -webkit-mask:url(/static/logo-512.png) center/contain no-repeat;mask:url(/static/logo-512.png) center/contain no-repeat;
+  animation:splash-shine .9s 1.95s ease-in-out both}
+.splash-shadow{position:absolute;left:18%;right:18%;bottom:-14px;height:18px;border-radius:50%;background:radial-gradient(closest-side,rgba(180,60,20,.35),transparent);
+  transform:scale(.2);opacity:0;animation:splash-shadow 1.45s .1s both}
+.splash-ring{position:absolute;left:50%;bottom:-6px;width:40px;height:14px;margin-left:-20px;border-radius:50%;border:3px solid rgba(255,120,30,.55);opacity:0;
+  animation:splash-ring .7s .53s ease-out both}
+.splash-drop{position:absolute;left:50%;bottom:4px;width:12px;height:12px;margin-left:-6px;border-radius:50%;opacity:0;animation:splash-drop .75s .52s cubic-bezier(.2,.7,.4,1) both}
+.splash-drop.d1{background:#ff7a1a;--x:-120px;--y:-70px}
+.splash-drop.d2{background:#18a64a;--x:120px;--y:-80px}
+.splash-drop.d3{background:#ffb347;--x:-70px;--y:-130px;width:9px;height:9px}
+.splash-drop.d4{background:#2fc35f;--x:80px;--y:-140px;width:9px;height:9px}
+.splash-drop.d5{background:#e8590c;--x:-150px;--y:-20px;width:8px;height:8px}
+.splash-drop.d6{background:#0f8a3c;--x:150px;--y:-25px;width:8px;height:8px}
+.splash-tagline{position:relative;margin:34px 0 0;font-weight:700;font-size:15px;letter-spacing:.4px;color:#c2410c;opacity:0;transform:translateY(10px);
+  animation:splash-tag .5s 1.75s ease-out both}
+
+@keyframes splash-jump{
+  0%{transform:translateY(-80vh);animation-timing-function:cubic-bezier(.55,0,1,.45)}
+  30%{transform:translateY(0);animation-timing-function:cubic-bezier(0,.55,.45,1)}
+  46%{transform:translateY(-22%);animation-timing-function:cubic-bezier(.55,0,1,.45)}
+  62%{transform:translateY(0);animation-timing-function:cubic-bezier(0,.55,.45,1)}
+  73%{transform:translateY(-7%);animation-timing-function:cubic-bezier(.55,0,1,.45)}
+  83%{transform:translateY(0);animation-timing-function:cubic-bezier(0,.55,.45,1)}
+  90%{transform:translateY(-2%)}
+  100%{transform:translateY(0)}
+}
+@keyframes splash-squash{
+  0%,26%{transform:scale(.92,1.12)}
+  30%{transform:scale(1.28,.72)}
+  36%{transform:scale(.9,1.12)}
+  46%{transform:scale(.98,1.03)}
+  60%{transform:scale(1,1)}
+  62%{transform:scale(1.14,.86)}
+  67%{transform:scale(.96,1.05)}
+  83%{transform:scale(1.05,.95)}
+  88%,100%{transform:scale(1,1)}
+}
+@keyframes splash-wobble{
+  0%{transform:rotate(0)}
+  25%{transform:rotate(-6deg) scale(1.03)}
+  55%{transform:rotate(4deg)}
+  80%{transform:rotate(-1.5deg)}
+  100%{transform:rotate(0)}
+}
+@keyframes splash-shadow{
+  0%{transform:scale(.2);opacity:0}
+  30%{transform:scale(1.15);opacity:1}
+  46%{transform:scale(.75);opacity:.6}
+  62%{transform:scale(1.05);opacity:1}
+  73%{transform:scale(.9);opacity:.85}
+  83%,100%{transform:scale(1);opacity:1}
+}
+@keyframes splash-ring{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(7,4)}}
+@keyframes splash-drop{
+  0%{opacity:1;transform:translate(0,0) scale(1)}
+  70%{opacity:1}
+  100%{opacity:0;transform:translate(var(--x),var(--y)) scale(.4)}
+}
+@keyframes splash-shine{0%{background-position:150% 0}100%{background-position:-60% 0}}
+@keyframes splash-tag{to{opacity:1;transform:none}}
+@keyframes splash-fade{to{opacity:1}}
+@keyframes splash-out{to{opacity:0;visibility:hidden}}
+@media (prefers-reduced-motion:reduce){
+  #splash{animation:splash-out .3s ease-in .6s forwards}
+  .splash-jump,.splash-squash,.splash-shadow{animation:none;transform:none;opacity:1}
+  .splash-drop,.splash-ring,.splash-shine{display:none}
+  .splash-tagline,.splash-glow{animation-duration:.01s;animation-delay:0s}
+}
